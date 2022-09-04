@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mail service</title>
+</head>
+<body>
+    <h1>Free mail service for my dudes</h1>
+    <form action="{% url 'home' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        <label for="toemail">To-email</label>
+        <input type="email" id="toemail" name="to-email" placeholder="example@mail.com" required>
+        <br><br>
+        <label for="name">Your name</label>
+        <input type="text" id="name" name="name">
+        <br><br>
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject">
+        <br><br>
+        <label for="body">Body</label>
+        <textarea id="body" name="body"></textarea>
+        <br><br>
+        <label for="attachments">Attachments</label>
+        <input type="file" id="attachments" name="attachments" multiple>
+        <br><br>
+        <label for="secretcode">Secret code</label>
+        <input type="password" name="secret-code" id="secretcode">
+        <br><br>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+    {% if success_message %}
+    {{ success_message }}
+    {% endif %}
+    {% if error_message %}
+    {{error_message}}
+    {% endif %}
+
+    <p>Note:<br>
+        This is free mail service developed
+         for my dudes where you can send email to anyone.
+          Incase the receiver didn't receive the mail or
+           some technical issues occured, 
+           all the data that the mail contains will be send 
+           to your registered email id.
+    </p>
+
+</body>
+</html>
