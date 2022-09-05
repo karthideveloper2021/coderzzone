@@ -7,9 +7,8 @@ class SendMail(threading.Thread):
     def __init__(self,args):
         super().__init__(target=self.send,args=args)
     
-    def send(self,data,attachment,trans_id):
-        print("working",data)
-        files=attachment.getlist('attachments')
+    def send(self,data,files,trans_id):
+        # print("working",data)
         user=User.objects.get(code=data['secret-code'])         
         history=History(uid=user.uid,transaction_id=trans_id)
         history.save()
@@ -32,4 +31,4 @@ class SendMail(threading.Thread):
             email.to=[user.email]
             email.send()
 
-        print("mail send..")
+        # print("mail send..")
