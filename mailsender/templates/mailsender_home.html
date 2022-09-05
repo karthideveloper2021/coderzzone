@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Free mail service for my dudes</h1>
-    <form action="{% url 'send' %}" method="post" enctype="multipart/form-data">
+    <form action="{% url 'home' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
         <label for="toemail">To-email</label>
         <input type="email" id="toemail" name="to-email" placeholder="example@mail.com" required>
