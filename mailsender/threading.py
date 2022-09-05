@@ -7,9 +7,9 @@ class SendMail(threading.Thread):
     def __init__(self,args):
         super().__init__(target=self.send,args=args)
     
-    def send(self,data,files,trans_id):
+    def send(self,data,attachment,trans_id):
         print("working",data)
-
+        files=attachment.getlist('attachments')
         user=User.objects.get(code=data['secret-code'])         
         history=History(uid=user.uid,transaction_id=trans_id)
         history.save()

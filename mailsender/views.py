@@ -12,36 +12,36 @@ def home(request):
     if request.method=='POST':
         # print(request.POST)
         data=request.POST
-        files=request.FILES.getlist('attachments')
+        files=request.FILES
         # print(files)
 
         user_code=User.objects.filter(code=data['secret-code'])
         
         if user_code.exists():
             trans_id=uuid.uuid4()
-            # SendMail(args=(data,files,trans_id)).start()
-            user=User.objects.get(code=data['secret-code'])         
-            history=History(uid=user.uid,transaction_id=trans_id)
-            history.save()
+            SendMail(args=(data,files,trans_id)).start()
+            # user=User.objects.get(code=data['secret-code'])         
+            # history=History(uid=user.uid,transaction_id=trans_id)
+            # history.save()
 
-            email=EmailMessage(
-                    from_email=EMAIL_HOST_USER,
-                    to=[data['to-email']],
-                    subject=data['subject'],
-                    body=data['body'],
-                )
-            for doc in files:
-                email.attach(doc.name,doc.read(),doc.content_type)
+            # email=EmailMessage(
+            #         from_email=EMAIL_HOST_USER,
+            #         to=[data['to-email']],
+            #         subject=data['subject'],
+            #         body=data['body'],
+            #     )
+            # for doc in files:
+            #     email.attach(doc.name,doc.read(),doc.content_type)
 
-            try:
-                email.send()
-                history.status=True
-                history.save()
+            # try:
+            #     email.send()
+            #     history.status=True
+            #     history.save()
             
-            except:
-                email.to=[user.email]
-                email.send()
-                context['success_message']="Mail has been sent to {} successfully with Transaction id: {}".format(data['to-email'],trans_id)
+            # except:
+            #     email.to=[user.email]
+            #     email.send()
+            context['success_message']="Mail has been sent to {} successfully with Transaction id: {}".format(data['to-email'],trans_id)
         else:
             context['error_message']="Sorry, your are not authorized to use this service"
     
