@@ -4,19 +4,22 @@ from mailsender.threading import SendMail
 from mailsender.models import History
 from django.core.mail import EmailMessage
 from coderz.settings import EMAIL_HOST_USER
+from django.contrib import messages
+from django.template.loader import render_to_string,get_template
 import uuid
+
 
 # Create your views here.
 def home(request):
-    context={}
+
+    return render(request,'mailsender_home.html')
+
+def send(request):
     if request.method=='POST':
-        # print(request.POST)
         data=request.POST
         files=request.FILES.getlist('attachments')
-        # print(files)
 
         user_code=User.objects.filter(code=data['secret-code'])
-        
         if user_code.exists():
             trans_id=uuid.uuid4()
             # SendMail(args=(data,files,trans_id)).start()
@@ -24,12 +27,18 @@ def home(request):
             history=History(uid=user.uid,transaction_id=trans_id)
             history.save()
 
+            # content=render_to_string("email_format.html",
+            #                 {'name':data['name'],'body':data['body']})
+            content=get_template("email_format.html").render({'name':data['name'],'body':data['body']})
+                            
             email=EmailMessage(
                     from_email=EMAIL_HOST_USER,
                     to=[data['to-email']],
                     subject=data['subject'],
-                    body=data['body'],
+                    body=content,
+                
                 )
+            email.content_subtype="html"
             for doc in files:
                 email.attach(doc.name,doc.read(),doc.content_type)
 
@@ -37,14 +46,17 @@ def home(request):
                 email.send()
                 history.status=True
                 history.save()
+                messages.success(request,
+                    "Mail has been sent to {} successfully with Transaction id: {}".format(data['to-email'],trans_id))
             
             except:
+                
                 email.to=[user.email]
                 email.send()
-            
-            context['success_message']="Mail has been sent to {} successfully with Transaction id: {}".format(data['to-email'],trans_id)
-        else:
-            context['error_message']="Sorry, your are not authorized to use this service"
-    
-    return render(request,'mailsender_home.html',context)
+                messages.success(request,
+                    "Failed to send the mail...Don't worry,The same mail has been sent to your registered email")
 
+            return redirect('home')
+        else:
+            messages.warning(request,"Sorry, your are not authorized to use this service")
+    return render(request,'mailsender_home.html')
