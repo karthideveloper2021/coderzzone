@@ -1,0 +1,89 @@
+body,html{
+    margin: 0;
+    height: 100%;
+}
+
+#left-navbar ul{
+    /* background-color: black; */
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    width: 100%;
+}
+
+#left-navbar ul li{
+    float: left;
+    list-style-type: none;
+    padding: 10px;
+}
+
+#left-navbar ul li a{
+    display: block;
+    border-radius: 15px;
+    text-transform: capitalize;
+    text-align: center;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    text-shadow: 0px 0px 5px red;
+    padding: 10px 15px;
+    transition: all 0.3s linear;
+}
+
+#left-navbar ul li a:hover{
+    text-shadow: 2px 0px 7px white;
+    box-shadow: 0px 0px 6px rgb(76, 41, 41);
+    color: black;
+    background-color: rgb(200, 4, 36);
+ 
+}
+
+#content{
+    height: 100%;
+    background-image: linear-gradient(to bottom left,red,pink,white);
+    background-size: 200% 200%;
+    animation: background-animation 10s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes background-animation{
+    0%{
+        background-position: 100% 0%;
+    }
+    50%{
+        background-position: 0% 100%;
+    }
+    100%{
+        background-position: 100% 0%;
+       
+    }
+}
+
+#message{
+    color: white;
+    position: absolute;
+    top:50%;
+    left: 50%; 
+    transform: translate(-50%,-50%);
+    font-size: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: italic;
+    text-shadow: 2px 2px red;
+    animation: text-animate 5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes text-animate{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+
+}

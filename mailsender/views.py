@@ -55,8 +55,8 @@ def send(request):
                 email.send()
                 messages.success(request,
                     "Failed to send the mail...Don't worry,The same mail has been sent to your registered email")
-
-            return redirect('home')
         else:
             messages.warning(request,"Sorry, your are not authorized to use this service")
-    return render(request,'mailsender_home.html')
+        return redirect('mailsender:home')
+    else:
+        return render(request,'mailsender_home.html')

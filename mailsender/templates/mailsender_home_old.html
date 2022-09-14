@@ -1,22 +1,15 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mail sender</title>
-    <link rel="stylesheet" href="{% static '/mailsender/styles/mail_form.css' %}">
+    <title>mail service</title>
 </head>
-
 <body>
-    <div id="title">
-    <h1>Free mail service for my friends</h1>
-    </div>
-    <div id="email-form">
+    <h1>Free mail service for my dudes</h1>
     <form action="{% url 'mailsender:send' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
+    {% csrf_token %}
         <label for="toemail">To-email</label>
         <input type="email" id="toemail" name="to-email" placeholder="example@mail.com" required>
         <br><br>
@@ -35,30 +28,23 @@
         <label for="secretcode">Secret code</label>
         <input type="password" name="secret-code" id="secretcode">
         <br><br>
-        <button id="submit-button" type="submit">Submit</button>
-        <button id="reset-button" type="reset">Reset</button>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
     </form>
-    </div>
-    <div id="note">
-        <p>Note:<br>
-            This is a free mail service developed
-            for my buddies where you can send email to anyone.
-            Incase the receiver didn't receive the mail or
-            some technical issues occured,
-            all the data that the mail contains will be send
-            to your registered email id.<br>
-            Don't use it for personal use...
-        </p>
-    </div>
     {% if messages %}
     {% for message in messages %}
-    <div {% if message.tags %} class="message message-{{ message.tags }}" {% endif %}>
-        {{message}}
-    </div>
+    {{message}}
     {% endfor %}
     {% endif %}
-    
+
+    <p>Note:<br>
+        This is a free mail service developed
+         for my buddies where you can send email to anyone.
+          Incase the receiver didn't receive the mail or
+           some technical issues occured, 
+           all the data that the mail contains will be send 
+           to your registered email id.
+    </p>
 
 </body>
-
 </html>
