@@ -32,7 +32,7 @@ DEBUG = config('DEBUG',cast=bool)
 
 ALLOWED_HOSTS = [
     '.localhost',
-    'coderzzone.herokuapp.com'
+    '.coderzzone.herokuapp.com'
 ]
 
 
