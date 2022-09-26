@@ -74,10 +74,13 @@
                     messageElement.style.visibility="visible";
                     loadingElement.style.visibility="hidden";
                     if (emailXHR.status == 200) {
-                        console.log(emailXHR.responseText);
+                        // console.log(emailXHR.responseText);
                         data = JSON.parse(emailXHR.responseText);
 
-                        if (data.type == "success") messageElement.style.backgroundColor = "rebeccapurple";
+                        if (data.type == "success") {
+                            messageElement.style.backgroundColor = "rebeccapurple";
+                            document.getElementById("email-form").reset();
+                        }
                         else if (data.type == "warning") messageElement.style.backgroundColor = "deeppink"
                         messageElement.innerHTML = data.content;
                         submitButton.disabled = false;
