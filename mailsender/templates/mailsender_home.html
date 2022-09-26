@@ -12,52 +12,91 @@
 
 <body>
     <div id="title">
-    <h1>Free mail service for my friends</h1>
+        <h1>Free mail service for my buddies</h1>
     </div>
-    <div id="email-form">
-    <form action="{% url 'mailsender:send' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <label for="toemail">To-email</label>
-        <input type="email" id="toemail" name="to-email" placeholder="example@mail.com" required>
-        <br><br>
-        <label for="name">Your name</label>
-        <input type="text" id="name" name="name">
-        <br><br>
-        <label for="subject">Subject</label>
-        <input type="text" id="subject" name="subject">
-        <br><br>
-        <label for="body">Body</label>
-        <textarea id="body" name="body"></textarea>
-        <br><br>
-        <label for="attachments">Attachments</label>
-        <input type="file" id="attachments" name="attachments" multiple>
-        <br><br>
-        <label for="secretcode">Secret code</label>
-        <input type="password" name="secret-code" id="secretcode">
-        <br><br>
-        <button id="submit-button" type="submit">Submit</button>
-        <button id="reset-button" type="reset">Reset</button>
-    </form>
+    <div id="form-container">
+        <form id="email-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="toemail">To-email</label>
+            <input type="email" id="toemail" name="to-email" placeholder="example@mail.com" required>
+            <br><br>
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name">
+            <br><br>
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject">
+            <br><br>
+            <label for="body">Body</label>
+            <textarea id="body" name="body"></textarea>
+            <br><br>
+            <label for="attachments">Attachments</label>
+            <input type="file" id="attachments" name="attachments" multiple>
+            <br><br>
+            <label for="secretcode">Secret code</label>
+            <input type="password" name="secret-code" id="secretcode" required>
+            <br><br>
+            <button id="submit-button">Submit</button>
+            <button id="reset-button" type="reset">Reset</button>
+        </form>
     </div>
     <div id="note">
-        <p>Note:<br>
+        <p>Note:<br><br>
             This is a free mail service developed
             for my buddies where you can send email to anyone.
-            Incase the receiver didn't receive the mail or
-            some technical issues occured,
-            all the data that the mail contains will be send
-            to your registered email id.<br>
-            Don't use it for personal use...
+            Check your inbox after each transaction that you made, Try again if anything goes wrong..<br><br>
+            Don't use it for personal use as everything can be seen from other side..
         </p>
     </div>
-    {% if messages %}
-    {% for message in messages %}
-    <div {% if message.tags %} class="message message-{{ message.tags }}" {% endif %}>
-        {{message}}
+    <div id="message" class="message">
+        
     </div>
-    {% endfor %}
-    {% endif %}
+    <div class="message" id="loading">
+        <img src="{% static 'mailsender/images/loading.gif' %}" alt="loading">
+        <br>
+        Don't refresh the page until the transaction is complete
+    </div>
     
+
+
+    <script>
+        var sendEmailRequest = () => {
+            event.preventDefault();
+            let submitButton = document.getElementById("submit-button");
+            submitButton.disabled = true;
+            let messageElement = document.getElementById("message");
+            let loadingElement=document.getElementById("loading");
+            loadingElement.style.visibility="visible";
+            messageElement.style.visibility="hidden";
+            let emailXHR = new XMLHttpRequest();
+            emailXHR.open("POST", "send")
+            emailXHR.onreadystatechange = () => {
+                if (emailXHR.readyState == 4) {
+                    messageElement.style.visibility="visible";
+                    loadingElement.style.visibility="hidden";
+                    if (emailXHR.status == 200) {
+                        console.log(emailXHR.responseText);
+                        data = JSON.parse(emailXHR.responseText);
+
+                        if (data.type == "success") messageElement.style.backgroundColor = "rebeccapurple";
+                        else if (data.type == "warning") messageElement.style.backgroundColor = "deeppink"
+                        messageElement.innerHTML = data.content;
+                        submitButton.disabled = false;
+                    }
+                    else if (emailXHR.status == 500) {
+                        submitButton.disabled = false;
+                        messageElement.style.backgroundColor = "red"
+                        messageElement.innerHTML = "something went wrong..contact your friend";
+                    }
+
+                }
+            }
+            let formData = new FormData(document.getElementById("email-form"));
+            emailXHR.send(formData);
+
+        }
+
+        document.getElementById("email-form").addEventListener("submit", sendEmailRequest);
+    </script>
 
 </body>
 

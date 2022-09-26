@@ -1,3 +1,5 @@
+from audioop import reverse
+from django.http import JsonResponse
 from django.shortcuts import render,redirect
 from mailsender.models import User
 from mailsender.threading import SendMail
@@ -9,6 +11,17 @@ from django.template.loader import render_to_string,get_template
 import uuid
 
 
+class Message:
+    def __init__(self,type,content):
+        self.type=type
+        self.content=content
+
+    def getJson(self):
+        return {
+            'type':self.type,
+            'content':self.content
+        }
+
 # Create your views here.
 def home(request):
 
@@ -18,11 +31,10 @@ def send(request):
     if request.method=='POST':
         data=request.POST
         files=request.FILES.getlist('attachments')
-
         user_code=User.objects.filter(code=data['secret-code'])
         if user_code.exists():
+            
             trans_id=uuid.uuid4()
-            # SendMail(args=(data,files,trans_id)).start()
             user=User.objects.get(code=data['secret-code'])         
             history=History(uid=user.uid,transaction_id=trans_id)
             history.save()
@@ -46,17 +58,16 @@ def send(request):
                 email.send()
                 history.status=True
                 history.save()
-                messages.success(request,
-                    "Mail has been sent to {} successfully with Transaction id: {}".format(data['to-email'],trans_id))
+                message=Message("success","Mail has been sent to {} successfully with Transaction id: {}".format(data['to-email'],trans_id))
             
             except:
                 
                 email.to=[user.email]
                 email.send()
-                messages.success(request,
-                    "Failed to send the mail...Don't worry,The same mail has been sent to your registered email")
+                message=Message("warning",
+                    "Failed to send the mail...")
         else:
-            messages.warning(request,"Sorry, your are not authorized to use this service")
-        return redirect('mailsender:home')
+            message=Message("warning","Sorry, your are not authorized to use this service")
+        return JsonResponse(message.getJson())
     else:
-        return render(request,'mailsender_home.html')
+        return redirect('mailsender:home')
