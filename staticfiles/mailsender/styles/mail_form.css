@@ -11,6 +11,7 @@ body{
     text-shadow: 1px 1px 1px pink;
 }
 
+
 #email-form{
     
     display: block;
@@ -23,7 +24,6 @@ body{
     color: purple;
     font-weight: 900;
     font-size: 18px;
-
 }
 
 #email-form input,textarea{
@@ -136,4 +136,19 @@ body{
     width: 250px;
     visibility: hidden;
     color: mediumseagreen;
+}
+
+#page-changer{
+    margin-right: 10px;
+    background-color: blue;
+    width: 50px;
+    height: 50px;
+    border-radius: 20px 10px 20px 10px;
+    float: right;
+    box-shadow: -5px 2px;
+}
+
+#design-1{
+    
+    display: none;
 }

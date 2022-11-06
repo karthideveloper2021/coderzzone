@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>mail service</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <!-- Press Ctrl and '/' together for comment line  
+         To insert a tag just type the name and press 'Tab'
+         To wrap a sentence use 'Ctrl+Shift+P' which opens a command box and search Wrap Abbreviation
+         For multiselect selct the place you want to change and press 'Ctrl+D' so your selection is highlighted-->
+    <body>
+            <h1>Free email service for my dudes</h1>
+            <section class="Final">
+            <form action="/mailsender/" method="post" enctype="multipart/form-data" id="Email-sender">
+            <!-- Field for email -->
+            <div class="Icons" id="email">
+                <img src="images/email-icon.svg" alt="Email icon">
+                <div>
+                 <label for="toemail"></label>
+                 <input type="email" id="toemail" name="to-email" placeholder="example@mail.com" 
+                             required autofocus>
+                </div>
+            </div>
+            <!-- Field for username -->
+            <div class="Icons" id="name">
+                <img src="images/user-personal-icon.svg" alt="User icon">
+                <div>
+                  <label for="Username"></label>
+                  <input type="text" id="Username" name="name" placeholder="Name">
+                </div>
+            </div>
+            <!-- Field for subject -->
+            <div class="Subject" id="subject">
+                <div>
+                 <label for="subject">Subject</label>
+                 <input type="text"  id="subject" name="subject">
+                </div> 
+            </div>
+            <!-- Field for body -->
+            <div class="Body" id="body">
+                <div>
+                  <label for="body"><strong>Body</strong></label>
+                  <textarea id="body" name="body"></textarea>
+                </div>
+            </div>
+            <!-- Field for attachments -->
+            <div class="Icons" id="attachments">
+                <img src="images/attachments-attach-svgrepo-com.svg" alt="Attachment pin icon">
+                <div>
+                  <label for="attachments"></label>
+                  <input type="file" id="attachments" name="attachments" multiple>
+                </div>  
+            </div>
+            <!-- Field for password -->
+            <div class="Icons" id="password">
+                <img src="images/key-icon.svg" alt="password key icon">
+                <div>
+                  <label for="secretcode"></label>
+                  <input type="password" name="secret-code" id="password">
+                </div>  
+            </div>
+            <!-- Field for Buttons-->
+            <br>
+            <button class="Email-sender" id="form-submit-button" type="submit">Submit</button>
+            <button class="Email-sender" id="form-reset-button" type="reset">Reset</button>         
+        </section>
+        </form>  
+    </body>
+</html>

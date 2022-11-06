@@ -8,71 +8,147 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mail sender</title>
     <link rel="stylesheet" href="{% static '/mailsender/styles/mail_form.css' %}">
+    <link rel="stylesheet" href="{% static '/mailsender/styles/mail_form_sr.css' %}">
 </head>
 
 <body>
-    <div id="title">
-        <h1>Free mail service for my buddies</h1>
-    </div>
-    <div id="form-container">
-        <form id="email-form" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <label for="toemail">To-email</label>
-            <input type="email" id="toemail" name="to-email" placeholder="example@mail.com" required>
-            <br><br>
-            <label for="name">Your name</label>
-            <input type="text" id="name" name="name">
-            <br><br>
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject">
-            <br><br>
-            <label for="body">Body</label>
-            <textarea id="body" name="body"></textarea>
-            <br><br>
-            <label for="attachments">Attachments</label>
-            <input type="file" id="attachments" name="attachments" multiple>
-            <br><br>
-            <label for="secretcode">Secret code</label>
-            <input type="password" name="secret-code" id="secretcode" required>
-            <br><br>
-            <button id="submit-button">Submit</button>
-            <button id="reset-button" type="reset">Reset</button>
-        </form>
-    </div>
-    <div id="note">
-        <p>Note:<br><br>
-            This is a free mail service developed
-            for my buddies where you can send email to anyone.
-            Check your inbox after each transaction that you made, Try again if anything goes wrong..<br><br>
-            Don't use it for personal use as everything can be seen from other side..
-        </p>
-    </div>
-    <div id="message" class="message">
+    <div id="page-changer">
         
     </div>
-    <div class="message" id="loading">
-        <img src="{% static 'mailsender/images/loading.gif' %}" alt="loading">
-        <br>
-        Don't refresh the page until the transaction is complete
+    <div id="design-1">
+        <div id="title">
+            <h1>Free mail service for my buddies</h1>
+        </div>
+        <div id="form-container">
+            <form id="email-form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="toemail">To-email</label>
+                <input type="email" id="toemail" name="to-email" placeholder="example@mail.com" required>
+                <br><br>
+                <label for="name">Your name</label>
+                <input type="text" id="name" name="name">
+                <br><br>
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject">
+                <br><br>
+                <label for="body">Body</label>
+                <textarea id="body" name="body"></textarea>
+                <br><br>
+                <label for="attachments">Attachments</label>
+                <input type="file" id="attachments" name="attachments" multiple>
+                <br><br>
+                <label for="secretcode">Secret code</label>
+                <input type="password" name="secret-code" id="secretcode" required>
+                <br><br>
+                <button id="submit-button" type="submit">Submit</button>
+                <button id="reset-button" type="reset">Reset</button>
+            </form>
+        </div>
+        <div id="note">
+            <p>Note:<br><br>
+                This is a free mail service developed
+                for my buddies where you can send email to anyone.
+                Check your inbox after each transaction that you made, Try again if anything goes wrong..<br><br>
+                Don't use it for personal use as everything can be seen from other side..
+            </p>
+        </div>
     </div>
+        <div id="message" class="message">
+
+        </div>
+        <div class="message" id="loading">
+            <img src="{% static 'mailsender/images/loading.gif' %}" alt="loading">
+            <br>
+            Don't refresh the page until the transaction is complete
+        </div>
     
+
+    <div id="design-2">
+        <h1>Free email service for my dudes</h1>
+        <section class="Final">
+            <form method="post" enctype="multipart/form-data" id="Email-sender">
+                {% csrf_token %}
+                <!-- Field for email -->
+                <div class="Icons" id="email">
+                    <img src="{% static '/mailsender/images/sr/email-icon.svg' %}" alt="Email icon">
+                    <div>
+                        <label for="toemail"></label>
+                        <input type="email" id="toemail" name="to-email" placeholder="example@mail.com" required
+                            autofocus>
+                    </div>
+                </div>
+                <!-- Field for username -->
+                <div class="Icons" id="name">
+                    <img src="{% static '/mailsender/images/sr/user-personal-icon.svg' %}" alt="User icon">
+                    <div>
+                        <label for="Username"></label>
+                        <input type="text" id="Username" name="name" placeholder="Name">
+                    </div>
+                </div>
+                <!-- Field for subject -->
+                <div class="Subject" id="subject">
+                    <div>
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject">
+                    </div>
+                </div>
+                <!-- Field for body -->
+                <div class="Body" id="body">
+                    <div>
+                        <label for="body"><strong>Body</strong></label>
+                        <textarea id="body" name="body"></textarea>
+                    </div>
+                </div>
+                <!-- Field for attachments -->
+                <div class="Icons" id="attachments">
+                    <img src="{% static '/mailsender/images/sr/attachments-attach-svgrepo-com.svg' %}"
+                        alt="Attachment pin icon">
+                    <div>
+                        <label for="attachments"></label>
+                        <input type="file" id="attachments" name="attachments" multiple>
+                    </div>
+                </div>
+                <!-- Field for password -->
+                <div class="Icons" id="password">
+                    <img src="{% static '/mailsender/images/sr/key-icon.svg' %}" alt="password key icon">
+                    <div>
+                        <label for="secretcode"></label>
+                        <input type="password" name="secret-code" id="password">
+                    </div>
+                </div>
+                <!-- Field for Buttons-->
+                <br>
+                <button id="form-submit-button" type="submit">Submit</button>
+                <button  id="form-reset-button" type="reset">Reset</button>
+        </section>
+        </form>
+        <p><b>Note:</b><i>
+            This is a free mail service developed
+            for my buddies where you can send email to anyone.
+            Check your inbox after each transaction that you made, Try again if anything goes wrong..</i><br><br>
+            <b>Don't use it for personal use as everything can be seen from other side..</b>
+        </p>
+    </div>
 
 
     <script>
+
+       
+        // design-1
         var sendEmailRequest = () => {
             event.preventDefault();
             let submitButton = document.getElementById("submit-button");
             submitButton.disabled = true;
             let messageElement = document.getElementById("message");
-            let loadingElement=document.getElementById("loading");
-            loadingElement.style.visibility="visible";
-            messageElement.style.visibility="hidden";
+            let loadingElement = document.getElementById("loading");
+            loadingElement.style.visibility = "visible";
+            messageElement.style.visibility = "hidden";
             let emailXHR = new XMLHttpRequest();
-            emailXHR.open("POST", "send")
+            emailXHR.open("POST", "send");
             emailXHR.onreadystatechange = () => {
                 if (emailXHR.readyState == 4) {
-                    messageElement.style.visibility="visible";
-                    loadingElement.style.visibility="hidden";
+                    messageElement.style.visibility = "visible";
+                    loadingElement.style.visibility = "hidden";
                     if (emailXHR.status == 200) {
                         // console.log(emailXHR.responseText);
                         data = JSON.parse(emailXHR.responseText);
@@ -87,7 +163,7 @@
                     }
                     else if (emailXHR.status == 500) {
                         submitButton.disabled = false;
-                        messageElement.style.backgroundColor = "red"
+                        messageElement.style.backgroundColor = "red";
                         messageElement.innerHTML = "something went wrong..contact your friend";
                     }
 
@@ -99,6 +175,69 @@
         }
 
         document.getElementById("email-form").addEventListener("submit", sendEmailRequest);
+
+        // design-2
+        var sendEmailRequest2 = () => {
+            event.preventDefault();
+            let submitButton2 = document.getElementById("form-submit-button");
+            submitButton2.disabled = true;
+            let messageElement2 = document.getElementById("message");
+            let loadingElement2 = document.getElementById("loading");
+            loadingElement2.style.visibility = "visible";
+            messageElement2.style.visibility = "hidden";
+            let emailXHR2 = new XMLHttpRequest();
+            emailXHR2.open("POST", "send");
+            emailXHR2.onreadystatechange = () => {
+                if (emailXHR2.readyState == 4) {
+                    messageElement2.style.visibility = "visible";
+                    loadingElement2.style.visibility = "hidden";
+                    if (emailXHR2.status == 200) {
+                        // console.log(emailXHR.responseText);
+                        data2 = JSON.parse(emailXHR2.responseText);
+
+                        if (data2.type == "success") {
+                            messageElement2.style.backgroundColor = "rebeccapurple";
+                            document.getElementById("Email-sender").reset();
+                        }
+                        else if (data2.type == "warning") messageElement2.style.backgroundColor = "deeppink";
+                        messageElement2.innerHTML = data2.content;
+                        submitButton2.disabled = false;
+                    }
+                    else if (emailXHR2.status == 500) {
+                        submitButton2.disabled = false;
+                        messageElement2.style.backgroundColor = "red";
+                        messageElement2.innerHTML = "something went wrong..contact your friend";
+                    }
+
+                }
+            }
+            let formData2 = new FormData(document.getElementById("Email-sender"));
+            emailXHR2.send(formData2);
+
+        }
+
+        document.getElementById("Email-sender").addEventListener("submit", sendEmailRequest2);
+
+
+
+
+        /*page selector*/
+        let pageChangeBool=true;
+        let pageChange=()=>{
+            if(pageChangeBool){
+            document.getElementById("page-changer").style.backgroundColor="violet";  
+            document.getElementById("design-1").style.display="block";
+            document.getElementById("design-2").style.display="none";
+            }else{
+                document.getElementById("page-changer").style.backgroundColor="blue";
+                document.getElementById("design-2").style.display="block";
+            document.getElementById("design-1").style.display="none";
+            }
+            pageChangeBool=!pageChangeBool;
+        }
+        document.getElementById("page-changer").addEventListener("click",pageChange);
+
+
     </script>
 
 </body>

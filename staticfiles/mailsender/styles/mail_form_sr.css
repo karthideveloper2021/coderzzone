@@ -1,0 +1,153 @@
+/* *{
+  padding: 0px;
+  box-sizing: border-box;
+  font-weight: bold;
+  font-family:'Montserrat',Helvetica;
+} */
+
+#design-2{ 
+  /* overflow: hidden; */
+  padding: 0px;
+  box-sizing: border-box;
+  font-family:'Montserrat',Helvetica;
+  background:linear-gradient(to bottom,#f1f4f9,#dff1ff);
+  text-align: center;
+}
+
+#design-2 section{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ background:linear-gradient(to bottom,#f1f4f9,#dff1ff);
+}
+
+#design-2 form{
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.5);
+  padding: 0px 80px 40px 40px;
+}
+
+#design-2 .Icons{
+  width: 27px;
+  display:-webkit-flex;
+}
+
+#design-2 #email input{
+  padding: 5px;
+  margin: 15px;
+  display: -webkit-flex;
+}
+
+#design-2 #email input:focus{
+  outline: none;
+  border: 1px solid rgba(81, 203, 238, 1);
+  box-shadow: 0px 0px 5px rgba(81, 203, 238, 1);
+}
+
+#design-2 #name input{
+  padding: 5px;
+  margin: 15px;
+  display:-webkit-flex;
+}
+
+#design-2 #name input:focus{
+  outline: none;
+  border: 1px solid rgba(81, 203, 238, 1);
+  box-shadow: 0px 0px 5px rgba(81, 203, 238, 1);
+}
+
+#design-2 .Subject
+{
+  display:-webkit-flex;
+  padding: 20px;
+  margin-left: -42px;
+}
+
+#design-2 #subject input{
+  padding: 5px;
+  margin-left: 10px;
+  display: -webkit-inline-flex;
+}
+
+#design-2 #subject input:focus{
+  outline: none;
+  border: 1px solid rgba(81, 203, 238, 1);
+  box-shadow: 0px 0px 5px rgba(81, 203, 238, 1);
+}
+
+#design-2 #attachments input{
+  padding: 5px;
+  margin: 15px;
+  display: -webkit-flex;
+}
+
+#design-2 #password input{
+  padding: 5px;
+  margin: 15px;
+  display: -webkit-flex;
+}
+
+#design-2 #password input:focus{
+  outline: none;
+  border: 1px solid rgba(81, 203, 238, 1);
+  box-shadow: 0px 0px 5px rgba(81, 203, 238, 1);
+}
+
+#design-2 .Body{
+  padding: 20px;
+  margin-left: -50px;
+}
+
+#design-2 .Body strong{
+  margin-left: -175px;
+}
+
+#design-2 .Body textarea{
+  resize: none;
+  width: 200px;
+  height: 100px;
+  /* display:inline; */
+  margin-left: -30px;
+}
+
+#design-2 textarea:focus{
+  outline: none;
+  border: 1px solid rgba(81, 203, 238, 1);
+  box-shadow: 0px 0px 5px rgba(81, 203, 238, 1);
+}
+
+#design-2 .Email-sender{
+  padding: 5px 0px;
+  width: 110px;
+  font-family:'Montserrat';
+}
+
+#design-2 button{
+  padding: 10px;
+  margin-left: 10px;
+  width: 100px;
+}
+
+#design-2 #form-submit-button{
+  color: white;
+  background-color:green;
+}
+
+#design-2 #form-submit-button:focus{
+  outline: none;
+  border: 1px solid rgba(81, 203, 238, 1);
+  box-shadow: 0px 0px 5px rgba(81, 203, 238, 1);
+}
+
+#design-2 #form-reset-button{
+  color: white;
+  background-color: red
+}
+
+#design-2 #form-reset-button:focus{
+  outline: none;
+  border: 1px solid rgba(81, 203, 238, 1);
+  box-shadow: 0px 0px 5px rgba(81, 203, 238, 1);
+}
+
