@@ -30,7 +30,7 @@ SECRET_KEY=config('SECRET_KEY')
 
 DEBUG = config('DEBUG',cast=bool)
 
-ALLOWED_HOSTS = ['coderzzone.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['.herokuapp.com','localhost']
 
 
 # Application definition
