@@ -1,7 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import render,redirect
 from mailsender.models import User
-from mailsender.threading import SendMail
 from mailsender.models import History
 from django.core.mail import EmailMessage
 from coderz.settings import EMAIL_HOST_USER
@@ -43,7 +42,7 @@ def send(request):
             content=get_template("email_format.html").render({'name':data['name'],'body':data['body']})
                             
             email=EmailMessage(
-                    from_email=EMAIL_HOST_USER,
+                    from_email="Coderzzone <{}>".format(EMAIL_HOST_USER),
                     to=[data['to-email']],
                     subject=data['subject'],
                     body=content,
