@@ -4,8 +4,7 @@ from mailsender.models import User
 from mailsender.models import History
 from django.core.mail import EmailMessage
 from coderz.settings import EMAIL_HOST_USER
-from django.contrib import messages
-from django.template.loader import render_to_string,get_template
+from django.template.loader import get_template
 import uuid
 
 
