@@ -1,4 +1,3 @@
-from audioop import reverse
 from django.http import JsonResponse
 from django.shortcuts import render,redirect
 from mailsender.models import User
