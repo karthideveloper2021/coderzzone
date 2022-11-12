@@ -11,9 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-import django_heroku
 from decouple import config
-import dj_database_url
+# import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -47,7 +46,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -88,7 +86,7 @@ DATABASES = {
     }
 }
 
-DATABASES['default']=dj_database_url.config()
+# DATABASES['default']=dj_database_url.config()
 
 
 # Password validation
@@ -133,7 +131,6 @@ STATICFILES_DIRS=[
     STATIC_URL,
 ]
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -149,5 +146,3 @@ EMAIL_HOST='smtp-mail.outlook.com'
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
 
-
-django_heroku.settings(locals())
