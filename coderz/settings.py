@@ -29,7 +29,7 @@ SECRET_KEY=config('SECRET_KEY',cast=str)
 
 DEBUG = config('DEBUG',cast=bool)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['coderzzone.pythonanywhere.com','localhost','127.0.0.1']
 
 # Application definition
 
@@ -79,12 +79,13 @@ WSGI_APPLICATION = 'coderz.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+DATABASES={
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
 
 
 

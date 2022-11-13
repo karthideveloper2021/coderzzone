@@ -3,10 +3,9 @@ from django.shortcuts import render,redirect
 from mailsender.models import User
 from mailsender.models import History
 from django.core.mail import EmailMessage
-from coderz.settings import EMAIL_HOST_USER
 from django.template.loader import get_template
 import uuid
-
+from decouple import config
 
 class Message:
     def __init__(self,type,content):
@@ -41,7 +40,7 @@ def send(request):
             content=get_template("email_format.html").render({'name':data['name'],'body':data['body']})
                             
             email=EmailMessage(
-                    from_email="Coderzzone <{}>".format(EMAIL_HOST_USER),
+                    from_email="Coderzzone <{}>".format(config('NO_REPLY_EMAIL')),
                     to=[data['to-email']],
                     subject=data['subject'],
                     body=content,
