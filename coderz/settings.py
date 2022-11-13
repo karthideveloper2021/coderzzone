@@ -86,7 +86,6 @@ DATABASES = {
     }
 }
 
-# DATABASES['default']=dj_database_url.config()
 
 
 # Password validation
@@ -123,13 +122,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = '/static/'
-
-STATIC_ROOT= BASE_DIR / 'staticfiles'
+STATIC_URL = 'static/'
 
 STATICFILES_DIRS=[
     BASE_DIR / 'static/',
+    
 ]
+
+STATIC_ROOT= BASE_DIR / 'staticfiles'
 
 
 # Default primary key field type

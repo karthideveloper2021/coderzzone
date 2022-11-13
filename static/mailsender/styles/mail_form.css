@@ -26,7 +26,7 @@ body{
     font-size: 18px;
 }
 
-#email-form input,textarea{
+#email-form input,#email-form textarea{
     display: block;
     transform: translate(100px,-25px);
     padding: 5px;
